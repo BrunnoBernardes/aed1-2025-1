@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 int main() {
+    
     int tamanho;
 
     printf("Digite o tamanho do vetor: ");
