@@ -4,6 +4,7 @@
 int main() {
     
     int N;
+    int i;
 
     do {
         printf("Digite um valor inteiro positivo para N: ");
@@ -20,7 +21,7 @@ int main() {
     }
 
     printf("Digite os %d elementos do vetor (digite um valor maior ou igual a 2):\n", N);
-    for (int i = 0; i < N; i++) {
+    for (i = 0; i < N; i++) {
         do {
             printf("Elemento %d: ", i + 1);
             scanf("%d", &V[i]);
@@ -31,7 +32,7 @@ int main() {
     }
 
     printf("Vetor lido: ");
-    for (int i = 0; i < N; i++) {
+    for (i = 0; i < N; i++) {
         printf("%d ", V[i]);
     }
 
