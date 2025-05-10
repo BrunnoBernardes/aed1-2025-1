@@ -33,9 +33,9 @@ void libera_lista(Lista *li){
     if (li != NULL){
         No *no;
 
-        while ((li->inicio) != NULL){
+        while (li->inicio != NULL){
             no = li->inicio;
-            li->inicio = (li->inicio)->prox;
+            li->inicio = li->inicio->prox;
             free(no);
         }
         free(li);
@@ -51,7 +51,7 @@ int insere_lista_final(Lista *li, Paciente p){
     novo->dados = p;
     novo->prox = NULL;
 
-    if ((li->inicio) == NULL){ // lista vazia: insere inicio
+    if (li->inicio == NULL){ // lista vazia: insere inicio
         li->inicio = novo;
     }
     else{
@@ -71,7 +71,7 @@ int insere_lista_inicio(Lista *li, Paciente p){
     if (novo == NULL)
         return 0;
     novo->dados = p;
-    novo->prox = (li->inicio);
+    novo->prox = li->inicio;
     li->inicio = novo;
     return 1;
 }
@@ -84,7 +84,7 @@ int insere_lista_ordenada(Lista *li, Paciente p){
         return 0;
     novo->dados = p;
 
-    if ((li->inicio == NULL || p.cod_paciente < li->inicio->dados.cod_paciente) == NULL){ // lista vazia: insere inicio
+    if (li->inicio == NULL || p.cod_paciente < li->inicio->dados.cod_paciente){ // lista vazia: insere inicio
         novo->prox = NULL;
         li->inicio = novo;
         return 1;
@@ -131,7 +131,7 @@ int remove_lista_inicio(Lista *li)
 {
     if (li == NULL)
         return 0;
-    if ((li->inicio) == NULL) // lista vazia
+    if (li->inicio == NULL) // lista vazia
         return 0;
 
     No* no = li->inicio;
@@ -144,7 +144,7 @@ int remove_lista_final(Lista *li)
 {
     if (li == NULL)
         return 0;
-    if ((li->inicio) == NULL) // lista vazia
+    if (li->inicio == NULL) // lista vazia
         return 0;
 
     No* ant = NULL;
@@ -178,7 +178,7 @@ int consulta_lista_cod(Lista *li, int cod){
             printf("ID CID: %d\n", atual->dados.cid_id);
             printf("NOME CID: %s\n", atual->dados.cid_nome);
             printf("SITUACAO: %s\n", atual->dados.situacao_vida ? "Vivo" : "Falecido");
-            printf("MEDICO: %s (ID: %d)\n", atual->dados.id_medico, atual->dados.medico.id_medico);
+            printf("MEDICO: %d (ID: %d)\n", atual->dados.id_medico, atual->dados.medico.id_medico);
             return 1;
         }
     atual = atual->prox;
