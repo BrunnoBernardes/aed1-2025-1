@@ -42,28 +42,6 @@ void libera_lista(Lista *li){
     }
 }
 
-int consulta_lista_cod(Lista *li, int cod){
-    if (li == NULL)
-        return 0;
-
-    No *atual = li->inicio;
-
-    while (atual != NULL)
-        if (atual->dados.cod_paciente == cod)
-        {
-            printf("NOME: %s\n", atual->dados.nome);
-            printf("CODIGO: %d\n", atual->dados.cod_paciente);
-            printf("ID CID: %d\n", atual->dados.cid_id);
-            printf("NOME CID: %s\n", atual->dados.cid_nome);
-            printf("SITUACAO: %d\n", atual->dados.situacao_vida);
-            printf("MEDICO: %s (ID: %d)\n", atual->dados.id_medico, atual->dados.medico.id_medico);
-            return 1;
-        }
-    atual = atual->prox;
-    printf("PACIENTE COM CODIGO %d NAO ENCONTRADO.\n", cod);
-    return 0;
-}
-
 int insere_lista_final(Lista *li, Paciente p){
     if (li == NULL)
         return 0;
@@ -127,7 +105,7 @@ int insere_lista_ordenada(Lista *li, Paciente p){
 int remove_lista(Lista *li, int cod){
     if (li == NULL)
         return 0;
-    if ((li->incio) == NULL) // lista vazia
+    if (li->inicio == NULL) // lista vazia
         return 0;
         
     No *ant = NULL;
@@ -153,11 +131,11 @@ int remove_lista_inicio(Lista *li)
 {
     if (li == NULL)
         return 0;
-    if ((*li) == NULL) // lista vazia
+    if ((li->inicio) == NULL) // lista vazia
         return 0;
 
-    Elem *no = *li;
-    *li = no->prox;
+    No* no = li->inicio;
+    li->inicio = no->prox;
     free(no);
     return 1;
 }
@@ -166,36 +144,65 @@ int remove_lista_final(Lista *li)
 {
     if (li == NULL)
         return 0;
-    if ((*li) == NULL) // lista vazia
+    if ((li->inicio) == NULL) // lista vazia
         return 0;
 
-    Elem *ant, *no = *li;
+    No* ant = NULL;
+    No* no = li->inicio;
+    
     while (no->prox != NULL)
     {
         ant = no;
         no = no->prox;
     }
 
-    if (no == (*li)) // remover o primeiro?
-        *li = no->prox;
+    if (ant == NULL) // remover o primeiro?
+        li->inicio = NULL;
     else
-        ant->prox = no->prox;
+        ant->prox = NULL;
     free(no);
     return 1;
 }
+
+int consulta_lista_cod(Lista *li, int cod){
+    if (li == NULL)
+        return 0;
+
+    No *atual = li->inicio;
+
+    while (atual != NULL)
+        if (atual->dados.cod_paciente == cod)
+        {
+            printf("NOME: %s\n", atual->dados.nome);
+            printf("CODIGO: %d\n", atual->dados.cod_paciente);
+            printf("ID CID: %d\n", atual->dados.cid_id);
+            printf("NOME CID: %s\n", atual->dados.cid_nome);
+            printf("SITUACAO: %s\n", atual->dados.situacao_vida ? "Vivo" : "Falecido");
+            printf("MEDICO: %s (ID: %d)\n", atual->dados.id_medico, atual->dados.medico.id_medico);
+            return 1;
+        }
+    atual = atual->prox;
+    
+    printf("PACIENTE COM CODIGO %d NAO ENCONTRADO.\n", cod);
+    return 0;
+}
+
 
 void imprime_lista(Lista *li)
 {
     if (li == NULL)
         return;
-    Elem *no = *li;
+
+    No* no = li->inicio;
     while (no != NULL)
     {
-        printf("Matricula: %d\n", no->dados.matricula);
-        printf("Nome: %s\n", no->dados.nome);
-        printf("Notas: %f %f %f\n", no->dados.n1,
-               no->dados.n2,
-               no->dados.n3);
+        printf("NOME: %s\n", no->dados.nome);
+        printf("CÓDIGO: %d\n", no->dados.cod_paciente);
+        printf("ID CID: %d\n", no->dados.cid_id);
+        printf("NOME CID: %s\n", no->dados.cid_nome);
+        printf("SITUAÇÃO: %s\n", no->dados.situacao_vida ? "Vivo" : "Falecido");
+        printf("MÉDICO: %s (ID: %d)\n", no->dados.medico.nome, no->dados.medico.id_medico);
+
         printf("-------------------------------\n");
 
         no = no->prox;
