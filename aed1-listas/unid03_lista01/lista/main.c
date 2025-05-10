@@ -14,7 +14,9 @@ int main() {
     insereInicio(l, 20);
     insereFim(l, 50);
     insereOrdenado(l, 30);
+    insereOrdenado(l, 15);
     insereFim(l, 70);
+    insereFim(l, 5);
     insereInicio(l, 10);
     imprimeLista(l);
 
