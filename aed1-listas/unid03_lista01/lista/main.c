@@ -33,9 +33,12 @@ int main() {
     imprimeLista(l);
 
     printf("Consultando...\n");
-    consultaValor(l, 30);
-    
-    consultaIndice(l, 2);
+    int index;
+    consultaValor(l, 30, &index);
+    printf("\tElemento %d encontrado no indice: %d\n", 30, index);
+    int elem;
+    consultaIndice(l, 2, &elem);
+    printf("\tBusca no indice %d, elemento encontrado: %d\n", 2, elem);
 
     printf("Removendo...\n");
     removeInicio(l);

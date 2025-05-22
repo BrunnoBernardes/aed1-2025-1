@@ -16,6 +16,6 @@ int insereOrdenado(Lista* l, int elem);
 int removeInicio(Lista* l);
 int removeFim(Lista* l);
 int removeElemento(Lista* l, int elem);
-int consultaValor(Lista* l, int elem);
-int consultaIndice(Lista* l, int indice);
+int consultaValor(Lista* l, int elem, int* index);
+int consultaIndice(Lista* l, int index, int* elem);
 void imprimeLista(Lista* l);
