@@ -71,18 +71,19 @@ int pilha_vazia(Pilha *pilha) {
 }
 
 // Insere um elemento na pilha (empilha)
-void insere_pilha(Pilha *pilha, int elem) {
+int insere_pilha(Pilha *pilha, int elem) {
     if (pilha == NULL) {
         printf("Pilha não alocada\n");
         exit(1);
     }
 
     if (pilha_cheia(pilha)) {
-        return;
+        return -1;
     }
 
     pilha->elem[pilha->index] = elem;
     pilha->index++;
+    return elem;
 }
 
 // Remove um elemento da pilha (desempilha)
@@ -121,8 +122,9 @@ void imprime_pilha(Pilha *pilha) {
         exit(1);
     }
 
-    for (int i = 0; i < pilha->index; i++) {
-        printf("%d ", pilha->elem[i]);
+    int i;
+    for (i = pilha->index - 1; i >= 0; i--) {
+        printf("\t%d\n", pilha->elem[i]);
     }
     printf("\n");
 }

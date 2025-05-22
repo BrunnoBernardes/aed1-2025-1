@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-
 #define TAM 20
 
 // Definição da estrutura da pilha
@@ -26,7 +22,7 @@ int pilha_cheia(Pilha *stack);
 int pilha_vazia(Pilha *stack);
 
 // Função para inserir um elemento na pilha
-void insere_pilha(Pilha *stack, int elem);
+int insere_pilha(Pilha *stack, int elem);
 
 // Função para remover um elemento da pilha
 int remove_pilha(Pilha *stack);
