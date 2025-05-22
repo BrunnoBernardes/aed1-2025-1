@@ -2,50 +2,55 @@
 #include "lista.h"
 
 int main() {
+    printf("Criando...\n");
     Lista* l = criaLista();
-    if (l == NULL) {
-        printf("Erro ao criar a lista!\n");
-        return 1;
-    }
 
-    if (listaVazia(l)) printf("Lista vazia.\n");
-    else printf("Lista nao esta vazia.\n");
 
+    printf("\tTamanho da lista: %d\n", tamanhoLista(l));
+
+    listaVazia(l);
+    listaCheia(l);
+
+    printf("Inserindo...\n");
     insereInicio(l, 20);
+    printf("\tElemento inserido no inicio: %d\n", 20);
     insereFim(l, 50);
+    printf("\tElemento inserido no fim: %d\n", 50);
     insereOrdenado(l, 30);
+    printf("\tElemento inserido ordenado: %d\n", 30);
     insereOrdenado(l, 15);
+    printf("\tElemento inserido ordenado: %d\n", 15);
     insereFim(l, 70);
+    printf("\tElemento inserido no fim: %d\n", 70);
     insereFim(l, 5);
+    printf("\tElemento inserido no fim: %d\n", 5);
     insereInicio(l, 10);
+    printf("\tElemento inserido no inicio: %d\n", 10);
+    
+    printf("\tTamanho da lista: %d\n", tamanhoLista(l));
+
+    printf("Imprimindo...\n");
     imprimeLista(l);
 
-    int valor;
-    if (consultaIndice(l, 2, &valor)) {
-        printf("Elemento no indice 2: %d\n", valor);
-    }
+    printf("Consultando...\n");
+    consultaValor(l, 30);
+    
+    consultaIndice(l, 2);
 
-    if (consultaValor(l, 50, &valor)) {
-        printf("Elemento 50 encontrado no indice: %d\n", valor);
-    }
-
-    if (listaCheia(l)) printf("Lista cheia.\n");
-    else printf("Lista nao esta cheia.\n");
-
+    printf("Removendo...\n");
     removeInicio(l);
+    printf("\tElemento removido do inicio.\n");
     removeFim(l);
+    printf("\tElemento removido do fim.\n");
     removeElemento(l, 30);
+    printf("\tElemento removido: %d\n", 30);
 
+    printf("\tTamanho da lista: %d\n", tamanhoLista(l));
+
+    printf("Imprimindo...\n");
     imprimeLista(l);
 
-    printf("Tamanho atual da lista: %d\n", tamanhoLista(l));
-
-    if (listaVazia(l)) printf("Lista vazia.\n");
-    else printf("Lista nao esta vazia.\n");
-
-    if (listaCheia(l)) printf("Lista cheia.\n");
-    else printf("Lista nao esta cheia.\n");
-
+    printf("Destruindo...\n");
     liberaLista(l);
     return 0;
 }

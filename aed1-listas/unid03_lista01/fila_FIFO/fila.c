@@ -33,10 +33,6 @@ void inicializaFila(Fila* f) {
 
 // Função para liberar a memória da fila
 void liberaFila(Fila* f) {
-    if (f == NULL) {
-        printf("Fila não alocada\n");
-        exit(1);
-    }
     free(f);
 }
 

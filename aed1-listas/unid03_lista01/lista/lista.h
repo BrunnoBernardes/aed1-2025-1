@@ -5,6 +5,7 @@ typedef struct lista Lista;
 
 // Prtótipos
 Lista* criaLista();
+void inicializaLista(Lista* l);
 void liberaLista(Lista* l);
 int tamanhoLista(Lista* l);
 int listaVazia(Lista* l);
@@ -15,6 +16,6 @@ int insereOrdenado(Lista* l, int elem);
 int removeInicio(Lista* l);
 int removeFim(Lista* l);
 int removeElemento(Lista* l, int elem);
-int consultaValor(Lista* l, int elem, int* pos);
-int consultaIndice(Lista* l, int indice, int* elem);
+int consultaValor(Lista* l, int elem);
+int consultaIndice(Lista* l, int indice);
 void imprimeLista(Lista* l);
