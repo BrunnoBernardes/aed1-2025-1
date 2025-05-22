@@ -1,10 +1,7 @@
 #define MAX 100
 
 // Definição da estrutura Lista
-typedef struct lista {
-    int dados[MAX];
-    int qtd;
-} Lista;
+typedef struct lista Lista;
 
 // Prtótipos
 Lista* criaLista();

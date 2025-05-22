@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include "lista.h"
 
+struct lista {
+    int dados[MAX];
+    int qtd;
+};
+
 // Cria e inicializa uma nova lista
 Lista* criaLista() {
     Lista* l = (Lista*) malloc(sizeof(Lista));
