@@ -87,7 +87,7 @@ int insereFila(FilaPrio* f, Elemento elem) {
     }
     f->elemento[i + 1] = elem;
     f->qtd++;
-    return 0;
+    return 1;
 }
 
 // Remove o elemento de maior prioridade da fila de prioridade
@@ -101,8 +101,13 @@ int removeFila(FilaPrio* f) {
         return -1;
     }
 
+    // Remove o elemento de maior prioridade (primeiro elemento na fila)
+    int i;
+    for (i = 0; i < f->qtd - 1; i++) {
+        f->elemento[i] = f->elemento[i + 1];
+    }
     f->qtd--;
-    return 0;
+    return 1;
 }
 
 // Consulta o elemento de maior prioridade da fila de prioridade
@@ -116,8 +121,8 @@ int consultaFila(FilaPrio* f, Elemento* elem) {
         return -1;
     }
 
-    *elem = f->elemento[f->qtd - 1]; // O elemento de maior prioridade está no final da fila
-    return 0;
+    *elem = f->elemento[0]; // O elemento de maior prioridade está no inicio da fila
+    return 1;
 }
 
 // Imprime os elementos da fila de prioridade

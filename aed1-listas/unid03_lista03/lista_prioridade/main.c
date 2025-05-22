@@ -6,7 +6,7 @@ int main() {
     printf("Criando...\n");
     FilaPrio* f = criaFila();
 
-    printf("\tTamanho da fila: %d\n", tamanhoFila(f));
+    printf("\tTamanho da fila: %d\n\n", tamanhoFila(f));
 
     filaVazia(f);
     filaCheia(f);
