@@ -131,9 +131,5 @@ void imprime_pilha(Pilha *pilha) {
 
 // Libera a pilha
 void libera_pilha(Pilha *pilha) {
-    if (pilha == NULL) {
-        printf("Pilha não alocada\n");
-        exit(1);
-    }
     free(pilha);
 }
