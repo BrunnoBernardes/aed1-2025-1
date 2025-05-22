@@ -3,6 +3,7 @@
 #include "pilha.h"
 
 int main() {
+    printf("Criando...\n");
     Pilha *pilha_real = cria_pilha();
 
     printf("\tTamanho da pilha: %d\n", tamanho_pilha(pilha_real));
