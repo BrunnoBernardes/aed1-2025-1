@@ -180,7 +180,7 @@ int removeElemento(Lista* l, int elem) {
 }
 
 // Consulta o índice de um elemento dado o seu valor
-int consultaValor(Lista* l, int elem) {
+int consultaValor(Lista* l, int elem, int* index) {
     if (l == NULL) {
         printf("Lista nao alocada\n");
         exit(1);
@@ -189,20 +189,22 @@ int consultaValor(Lista* l, int elem) {
         return -1;
     }
 
-    for (int i = 0; i < l->qtd; i++) {
+    int i;
+    for (i = 0; i < l->qtd; i++) {
         if (l->dados[i] == elem) {
-            int index = i;
-            return index;
-        } else {
-            printf("Elemento nao encontrado!\n");
-            return 0;
+            *index = i;
+            return 1;
         }
+    }
+    if (i == l->qtd) {
+        printf("\tElemento nao encontrado\n");
+        return 0;
     }
     return 1;
 }
 
 // Consulta o valor de um elemento dado o seu índice
-int consultaIndice(Lista* l, int indice) {
+int consultaIndice(Lista* l, int index, int* elem) {
     if (l == NULL) {
         printf("Lista nao alocada\n");
         exit(1);
@@ -210,13 +212,13 @@ int consultaIndice(Lista* l, int indice) {
     if (listaVazia(l)) {
         return -1;
     }
-    if (indice < 0 || indice >= l->qtd) {
-        printf("Índice invalido!\n");
+    if (index < 0 || index >= l->qtd) {
+        printf("Indice invalido!\n");
         return 0;
     }
 
-    int elem = l->dados[indice];
-    return elem;
+    *elem = l->dados[index];
+    return 1;
 }
 
 // Imprime todos os elementos da lista
