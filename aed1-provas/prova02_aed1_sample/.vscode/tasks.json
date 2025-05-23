@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-NOME_PROJETO", // Deve ser igual ao campo 'preLaunchTask' do arquivo launch.json
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "minha_logica.c", // Alterar minha_logica.c para o nome do arquivo que implementa as funções do seu projeto
+                "principal.c", // Alterar principal.c para o nome do arquivo principal do seu projeto
+                "-o",
+                "NOME_SAIDA", // Alterar NOME_PROJETO para a saída do seu projeto
+                "-lm" // Chamada da biblioteca Math.h
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
