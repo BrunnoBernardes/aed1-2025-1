@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug NOME_PROJETO", // Alterar NOME_PROJETO para o nome do seu projeto
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/NOME_SAIDA", // Alterar NOME_PROJETO para a saída do seu projeto
+            // "args": [],
+            // "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Habilitar impressão formatada para gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build-NOME_PROJETO" // Alterar NOME_PROJETO para o nome do seu projeto
+        }
+    ]
+}
