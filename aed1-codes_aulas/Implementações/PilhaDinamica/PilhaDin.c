@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "PilhaDin.h" //inclui os Protótipos
+#include "PilhaDin.h" //inclui os Protï¿½tipos
 
-//Definição do tipo Pilha
+//Definiï¿½ï¿½o do tipo Pilha
 struct elemento{
     struct aluno dados;
     struct elemento *prox;
