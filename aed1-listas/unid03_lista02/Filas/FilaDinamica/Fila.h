@@ -1,6 +1,7 @@
+#define MAX 50
 typedef struct cliente {
     int codigo;
-    char nome[50];
+    char nome[MAX];
 } Cliente;
 
 typedef struct no {
@@ -14,11 +15,12 @@ typedef struct {
     int tamanho;
 } Fila;
 
-// Operações
+// Protótipos
 Fila* criaFila();
 void liberaFila(Fila* f);
-int enfileira(Fila* f, Cliente c);
-int desenfileira(Fila* f, Cliente* c);
+void inicializaFila(Fila* f);
+int insereFila(Fila* f, Cliente c);
+int removeFila(Fila* f, Cliente* c);
 void listarFila(Fila* f);
 int tamanhoFila(Fila* f);
 float tempoMedioEspera(Fila* f);

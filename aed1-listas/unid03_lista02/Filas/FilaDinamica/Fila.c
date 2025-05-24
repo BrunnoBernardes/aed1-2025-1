@@ -5,31 +5,54 @@
 
 Fila* criaFila() {
     Fila* f = (Fila*) malloc(sizeof(Fila));
-    if (f != NULL) {
-        f->inicio = NULL;
-        f->fim = NULL;
-        f->tamanho = 0;
+    if (f == NULL) {
+        printf("Erro ao alocar memoria para a fila!\n");
+        exit(1);
     }
+
+    inicializaFila(f);
+
     return f;
 }
 
-void liberaFila(Fila* f) {
-    if (f != NULL) {
-        No* atual;
-        while (f->inicio != NULL) {
-            atual = f->inicio;
-            f->inicio = f->inicio->prox;
-            free(atual);
-        }
-        free(f);
+void inicializaFila(Fila* f) {
+    if (f == NULL) {
+        printf("Erro ao alocar memoria para a fila!\n");
+        exit(1);
     }
+
+    f->inicio = NULL;
+    f->fim = NULL;
+    f->tamanho = 0;
 }
 
-int enfileira(Fila* f, Cliente c) {
-    if (f == NULL) return 0;
+void liberaFila(Fila* f) {
+    if (f == NULL) {
+        printf("Erro ao alocar memoria para a fila!\n");
+        exit(1);
+    }
+
+    No* atual = f->inicio;
+    No* proximo;
+    while (atual != NULL) {
+        proximo = atual->prox;
+        free(atual);
+        atual = proximo;
+    }
+    free(f);
+}
+
+int insereFila(Fila* f, Cliente c) {
+    if (f == NULL) {
+        printf("Erro ao alocar memoria para a fila!\n");
+        exit(1);
+    }
 
     No* novo = (No*) malloc(sizeof(No));
-    if (novo == NULL) return 0;
+    if (novo == NULL) {
+        printf("Erro ao alocar memoria para a cliente!\n");
+        return -1;
+    }
 
     novo->dados = c;
     novo->prox = NULL;
@@ -45,23 +68,35 @@ int enfileira(Fila* f, Cliente c) {
     return 1;
 }
 
-int desenfileira(Fila* f, Cliente* c) {
-    if (f == NULL || f->inicio == NULL) return 0;
+int removeFila(Fila* f, Cliente* c) {
+    if (f == NULL) {
+        printf("Erro ao alocar memoria para a fila!\n");
+        exit(1);
+    }
+    
+    if (f->inicio == NULL) {
+        printf("Fila vazia!\n");
+        return 0;
+    }
 
     No* aux = f->inicio;
     *c = aux->dados;
     f->inicio = f->inicio->prox;
-
-    if (f->inicio == NULL)
+    if (f->inicio == NULL) {
         f->fim = NULL;
-
+    }
     free(aux);
     f->tamanho--;
     return 1;
 }
 
 void listarFila(Fila* f) {
-    if (f == NULL || f->inicio == NULL) {
+    if (f == NULL) {
+        printf("Erro ao alocar memoria para a fila!\n");
+        exit(1);
+    }
+    
+    if (f->inicio == NULL) {
         printf("Fila vazia!\n");
         return;
     }
@@ -74,11 +109,18 @@ void listarFila(Fila* f) {
 }
 
 int tamanhoFila(Fila* f) {
-    if (f == NULL) return 0;
+    if (f == NULL) {
+        printf("Erro ao alocar memoria para a fila!\n");
+        exit(1);
+    }
+    
     return f->tamanho;
 }
 
 float tempoMedioEspera(Fila* f) {
-    if (f == NULL) return 0;
+    if (f == NULL) {
+        printf("Erro ao alocar memoria para a fila!\n");
+        exit(1);
+    }
     return f->tamanho * 10.0; // 10 minutos por cliente
 }
