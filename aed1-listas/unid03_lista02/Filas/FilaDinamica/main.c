@@ -24,13 +24,13 @@ int main() {
                 scanf("%d", &c.codigo);
                 printf("Digite o nome do cliente: ");
                 scanf(" %[^\n]", c.nome);
-                if (enfileira(fila, c))
+                if (insereFila(fila, c))
                     printf("Cliente adicionado com sucesso!\n");
                 else
                     printf("Erro ao adicionar cliente!\n");
                 break;
             case 2:
-                if (desenfileira(fila, &c))
+                if (removeFila(fila, &c))
                     printf("Chamando cliente: %s (codigo %d)\n", c.nome, c.codigo);
                 else
                     printf("Fila vazia!\n");
