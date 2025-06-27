@@ -1,3 +1,6 @@
+// Código ilustrativo da contagem braçal das trocas e comparações em algoritmos de ordenação
+// Feito com GPT
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
